@@ -35,7 +35,7 @@ st.write("### To my favorite person in the world...")
 # 1. Upload your photo to a site like imgur.com 
 # 2. Right click the image and select "Copy Image Address"
 # 3. Paste that link below inside the quotes.
-st.image("us.heic", caption="My favorite person ❤️") # CHANGE THIS
+st.image("us.jpg", caption="My favorite person ❤️") # CHANGE THIS
 st.image(image_url, use_container_width=True)
 
 st.divider()
@@ -60,4 +60,5 @@ if st.button("Will you be my Valentine? 🌹"):
     st.balloons()
 
     st.markdown("## 💖 YAY! I love you! 💖")
+
 
