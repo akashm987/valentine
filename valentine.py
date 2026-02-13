@@ -8,7 +8,7 @@ st.markdown("""
     <style>
     .stApp { background-color: #ffe6e6; }
     .stButton>button {
-        background-color: #ff4b4b;
+        background-color: #9c6d6d;
         color: white;
         font-size: 20px;
         border-radius: 10px;
@@ -77,3 +77,4 @@ elif st.session_state.page == 4:
     st.image("https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600", caption="YAY!")
     if st.button("Start Over"):
         restart()
+
