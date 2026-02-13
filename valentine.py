@@ -14,7 +14,7 @@ st.markdown("""
     <style>
     /* Background Color */
     .stApp {
-        background-color: #ffe6e6;
+        background-color: #9c6d6d;
     }
     
     /* Center all images */
@@ -147,3 +147,4 @@ elif st.session_state.page == 3:
                     pass # The page just reloads with a bigger YES button
             else:
                 st.write("😈 No choice now!")
+
