@@ -32,7 +32,7 @@ if st.session_state.page == 1:
     st.write("### I have a surprise for you...")
     
     # Cute bear/heart image that WORKS
-    st.image("https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600", caption="For You")
+    # st.image("https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600", caption="For You")
     
     if st.button("Open My Gift 🎁"):
         next_page()
@@ -77,5 +77,6 @@ elif st.session_state.page == 4:
     st.image("https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600", caption="YAY!")
     if st.button("Start Over"):
         restart()
+
 
 
