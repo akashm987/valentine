@@ -6,7 +6,7 @@ st.set_page_config(page_title="For My Valentine ❤️", page_icon="💖")
 # 2. Styling
 st.markdown("""
     <style>
-    .stApp { background-color: #ffe6e6; }
+    .stApp { background-color: #9c6d6d; }
     .stButton>button {
         background-color: #9c6d6d;
         color: white;
@@ -77,4 +77,5 @@ elif st.session_state.page == 4:
     st.image("https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600", caption="YAY!")
     if st.button("Start Over"):
         restart()
+
 
