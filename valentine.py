@@ -114,7 +114,7 @@ elif st.session_state.page == 3:
     # If they haven't answered yet
     else:
         st.title("Will you be my Valentine? 🥺")
-        st.image("wilyoubemyvalentine.jpg", width=250) # Pleading face
+        st.image("wilyoubemyvalentine.jpg") # Pleading face
         
         st.write("")
         
@@ -147,4 +147,5 @@ elif st.session_state.page == 3:
                     pass # The page just reloads with a bigger YES button
             else:
                 st.write("😈 No choice now!")
+
 
