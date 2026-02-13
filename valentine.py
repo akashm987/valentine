@@ -1,64 +1,149 @@
 import streamlit as st
 import time
 
-# Page Setup
-st.set_page_config(page_title="For My Valentine ❤️", page_icon="❤️")
+# 1. Page Config (Tab Title & Mobile Settings)
+st.set_page_config(
+    page_title="For My Valentine ❤️",
+    page_icon="💖",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
-# Styling to make it look nice
+# 2. Custom CSS (Make it pretty & Mobile Friendly)
 st.markdown("""
-<style>
+    <style>
+    /* Background Color */
     .stApp {
         background-color: #ffe6e6;
     }
-    h1 {
-        color: #d6336c;
-        text-align: center;
-        font-family: 'Brush Script MT', cursive;
+    
+    /* Center all images */
+    div[data-testid="stImage"] {
+        display: flex;
+        justify-content: center;
     }
+    
+    /* Make buttons look clickable and nice on mobile */
     .stButton>button {
         background-color: #ff4b4b;
         color: white;
         border-radius: 20px;
+        font-size: 18px;
+        padding: 10px;
         width: 100%;
-        border: none;
+        border: 2px solid #ff4b4b;
     }
-</style>
+    
+    /* Specific style for the YES button to make it pop */
+    .big-button {
+        font-size: 30px !important;
+        background-color: #ff0000 !important;
+        font-weight: bold;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
-# --- CONTENT START ---
+# 3. Session State (This tracks which page we are on)
+if 'page' not in st.session_state:
+    st.session_state.page = 1
+if 'no_count' not in st.session_state:
+    st.session_state.no_count = 0
 
-st.title("❤️ Happy Valentine's Day Babu! ❤️")
-st.write("### To my favorite person in the world...")
+# --- Functions to change pages ---
+def next_page():
+    st.session_state.page += 1
 
-# Photo Section
-# To use your own photo: 
-# 1. Upload your photo to a site like imgur.com 
-# 2. Right click the image and select "Copy Image Address"
-# 3. Paste that link below inside the quotes.
-st.image("us.jpg", caption="My favorite person ❤️") # CHANGE THIS
-st.image(image_url, use_container_width=True)
+def restart():
+    st.session_state.page = 1
+    st.session_state.no_count = 0
 
-st.divider()
+def click_no():
+    st.session_state.no_count += 1
 
-# Interactive Section
-st.header("💌 Why I Love You")
+# ================= PAGE 1: INTRO =================
+if st.session_state.page == 1:
+    st.title("Happy Valentine's Day Babyy! 💖")
+    st.write("### I have a surprise for you...")
+    
+    # Cute bear gif
+    st.image("https://media.giphy.com/media/l0HlPjhcfYV4ZcE3C/giphy.gif", width=300)
+    
+    st.write("") # Spacer
+    if st.button("Open My Gift 🎁"):
+        next_page()
 
-if st.button("Reason #1"):
-    st.success("You have the cutest laugh I've ever heard.") # CHANGE THIS
+# ================= PAGE 2: REASONS & PHOTOS =================
+elif st.session_state.page == 2:
+    st.title("Why I Love You ✨")
+    
+    # Photo Gallery (You can add your own image links here)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image("https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif", caption="Our Vibe") 
+    with col2:
+        st.image("https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif", caption="Cute You")
 
-if st.button("Reason #2"):
-    st.warning("You support my dreams like no one else.") # CHANGE THIS
+    st.divider()
+    
+    # Reasons List
+    st.subheader("3 Reasons why you are the best:")
+    st.success("1. You make me laugh when I'm sad.")
+    st.info("2. You give the best hugs.")
+    st.warning("3. You are my home.")
+    
+    st.write("")
+    if st.button("Next ->"):
+        next_page()
 
-if st.button("Reason #3"):
-    st.error("You make the bad days better just by being there.") # CHANGE THIS
-
-st.divider()
-
-# The Big Question
-st.subheader("I have one question...")
-if st.button("Will you be my Valentine? 🌹"):
-    st.balloons()
-
-    st.markdown("## 💖 YAY! I love you! 💖")
-
-
+# ================= PAGE 3: THE BIG QUESTION =================
+elif st.session_state.page == 3:
+    
+    # If they clicked YES
+    if st.session_state.get('yes_clicked'):
+        st.balloons()
+        st.title("💖 I LOVE YOU BABU! 💖")
+        st.image("https://media.giphy.com/media/4N1wOi78ZGzQtCT4pH/giphy.gif") # Happy bear
+        st.write("You just made me the happiest person alive!")
+        
+        # Hearts animation
+        st.markdown("❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎")
+        if st.button("Read it again?"):
+            st.session_state.yes_clicked = False
+            restart()
+            
+    # If they haven't answered yet
+    else:
+        st.title("Will you be my Valentine? 🥺")
+        st.image("https://media.giphy.com/media/c76IJLufpNwSULPk77/giphy.gif", width=250) # Pleading face
+        
+        st.write("")
+        
+        # Logic for Growing Button
+        # The 'Yes' button gets more exclamation marks and emojis every time 'No' is clicked
+        yes_label = "YES! ❤️"
+        if st.session_state.no_count > 0:
+            yes_label = "YES" + "!" * st.session_state.no_count + " ❤️" * st.session_state.no_count
+        
+        # Columns for buttons
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # If they click YES
+            if st.button(yes_label, key="yes_btn", use_container_width=True):
+                st.session_state.yes_clicked = True
+                st.rerun()
+        
+        with col2:
+            # The NO button
+            # It changes text or disappears if clicked too many times
+            if st.session_state.no_count < 5:
+                no_label = "No 💔"
+                if st.session_state.no_count == 1: no_label = "Are you sure?"
+                if st.session_state.no_count == 2: no_label = "Please?"
+                if st.session_state.no_count == 3: no_label = "Don't do this!"
+                if st.session_state.no_count == 4: no_label = "I'm gonna cry..."
+                
+                if st.button(no_label, key="no_btn", on_click=click_no, use_container_width=True):
+                    pass # The page just reloads with a bigger YES button
+            else:
+                st.write("😈 No choice now!")
