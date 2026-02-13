@@ -62,11 +62,11 @@ def click_no():
 
 # ================= PAGE 1: INTRO =================
 if st.session_state.page == 1:
-    st.title("Happy Valentine's Day Babyy! 💖")
+    st.title("Happy Valentine's Day Babyy! 😘🫂💖🧿")
     st.write("### I have a surprise for you...")
     
     # Cute bear gif
-    st.image("https://media.giphy.com/media/l0HlPjhcfYV4ZcE3C/giphy.gif", width=300)
+    st.image("https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif", width=300)
     
     st.write("") # Spacer
     if st.button("Open My Gift 🎁"):
@@ -74,22 +74,22 @@ if st.session_state.page == 1:
 
 # ================= PAGE 2: REASONS & PHOTOS =================
 elif st.session_state.page == 2:
-    st.title("Why I Love You ✨")
+    st.title("Aanu Babyyyyy 😘😘😘😘😘")
     
     # Photo Gallery (You can add your own image links here)
     col1, col2 = st.columns(2)
     with col1:
-        st.image("https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif", caption="Our Vibe") 
+        st.image("MyLove.jpg", caption="My Love") 
     with col2:
-        st.image("https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif", caption="Cute You")
+        st.image("us.jpg", caption="Us <3")
 
     st.divider()
     
     # Reasons List
-    st.subheader("3 Reasons why you are the best:")
-    st.success("1. You make me laugh when I'm sad.")
-    st.info("2. You give the best hugs.")
-    st.warning("3. You are my home.")
+    # st.subheader("3 Reasons why you are the best:")
+    st.success(" Your smile lights up my entire world")
+    st.info("You make even the boring days feel like an adventure")
+    st.warning("I Love You Soo Much My Love 😘🫂❤️🧿")
     
     st.write("")
     if st.button("Next ->"):
@@ -101,12 +101,12 @@ elif st.session_state.page == 3:
     # If they clicked YES
     if st.session_state.get('yes_clicked'):
         st.balloons()
-        st.title("💖 I LOVE YOU BABU! 💖")
-        st.image("https://media.giphy.com/media/4N1wOi78ZGzQtCT4pH/giphy.gif") # Happy bear
+        st.title("I Love You My Cutie Pie 👀🫂❤️🧿")
+        st.image("yay.jpg") # Happy bear
         st.write("You just made me the happiest person alive!")
         
         # Hearts animation
-        st.markdown("❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎")
+        st.markdown("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️")
         if st.button("Read it again?"):
             st.session_state.yes_clicked = False
             restart()
@@ -114,7 +114,7 @@ elif st.session_state.page == 3:
     # If they haven't answered yet
     else:
         st.title("Will you be my Valentine? 🥺")
-        st.image("https://media.giphy.com/media/c76IJLufpNwSULPk77/giphy.gif", width=250) # Pleading face
+        st.image("wilyoubemyvalentine.jpg", width=250) # Pleading face
         
         st.write("")
         
@@ -147,3 +147,4 @@ elif st.session_state.page == 3:
                     pass # The page just reloads with a bigger YES button
             else:
                 st.write("😈 No choice now!")
+
