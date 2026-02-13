@@ -28,7 +28,7 @@ def restart():
 
 # --- PAGE 1: WELCOME ---
 if st.session_state.page == 1:
-    st.title("Happy Valentine's Day Babyy! 💖")
+    st.title("Happy Valentine's Day Babyy! 😘🫂💖🧿")
     st.write("### I have a surprise for you...")
     
     # Cute bear/heart image that WORKS
@@ -43,13 +43,13 @@ elif st.session_state.page == 2:
     
     col1, col2 = st.columns(2)
     with col1:
-        st.image("https://images.unsplash.com/photo-1516575150278-77136aed6920?w=400", caption="Us <3")
+        st.image("us.jpg", caption="Us <3")
     with col2:
-        st.image("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400", caption="My Love")
+        st.image("MyLove.jpg", caption="My Love")
 
-    st.success("1. You make me laugh when I'm sad.")
-    st.info("2. You give the best hugs.")
-    st.warning("3. You are my home.")
+    st.success(" You make me laugh when I'm sad.")
+    st.info(" You give the best hugs.")
+    st.warning(" You are my home.")
     
     if st.button("Next ->"):
         next_page()
@@ -59,7 +59,7 @@ elif st.session_state.page == 3:
     st.title("Will you be my Valentine? 🥺")
     
     # Puppy eyes image
-    st.image("https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500")
+    st.image("wilyoubemyvalentine.jpg")
     
     col1, col2 = st.columns(2)
     with col1:
@@ -74,9 +74,10 @@ elif st.session_state.page == 3:
 elif st.session_state.page == 4:
     st.balloons()
     st.title("💖 I LOVE YOU BABU! 💖")
-    st.image("https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600", caption="YAY!")
+    st.image("yay.jpg", caption="YAY!")
     if st.button("Start Over"):
         restart()
+
 
 
 
